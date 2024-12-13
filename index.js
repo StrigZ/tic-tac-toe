@@ -95,6 +95,9 @@ const TicTacToe = (function () {
     });
 
     if (winner) {
+      // Show winner somewhere on the page
+      // Disable board
+      // Show restart button
       console.log(`AND THE WINNER IS ${winner}`);
     }
   };

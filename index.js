@@ -85,5 +85,17 @@ const TicTacToe = (function () {
     }
   };
 
-  return { resetBoard, getBoard, getWinner, placeMark };
+  const checkIsBoardFull = () => {
+    if (!gameBoard.flat().includes(null)) {
+      winner = "DRAW";
+      console.log(winner);
+    }
+  };
+
+  return {
+    resetBoard,
+    getBoard,
+    getWinner,
+    placeMark,
+  };
 })();

@@ -11,6 +11,9 @@ const createPlayer = function ({ name, mark }) {
 const TicTacToe = (function () {
   let gameBoard = STARTING_GAME_BOARD;
   let winner = null;
+  const firstPlayer = createPlayer({ name: "First Player", mark: "X" });
+  const secondPlayer = createPlayer({ name: "Second Player", mark: "O" });
+  let currentPlayer = firstPlayer;
 
   const getBoard = () => gameBoard;
   const getWinner = () => winner;
@@ -21,26 +24,32 @@ const TicTacToe = (function () {
     return gameBoard;
   };
 
-  const placeMark = (player, x, y) => {
-    const isOccupied = !!gameBoard[y][x];
+  const placeMark = (x, y) => {
+    if (x > 2 || x < 0 || y < 0 || y > 2) {
+      return console.log("Out of bounds");
+    }
+
+    const isOccupied = !!gameBoard[x][y];
 
     if (!isOccupied) {
-      gameBoard[y][x] = player.mark;
+      gameBoard[x][y] = currentPlayer.mark;
       console.table(gameBoard);
-      checkWin(player);
+      checkWin(currentPlayer);
       checkIsBoardFull();
 
-      return gameBoard;
+      currentPlayer =
+        currentPlayer === firstPlayer ? secondPlayer : firstPlayer;
     } else {
+      // Show error somewhere
       console.log("Already occupied");
     }
   };
 
-  const checkWin = (player) => {
+  const checkWin = () => {
     // horizontal win
     gameBoard.forEach((row) => {
-      if (row.every((mark) => mark === player.mark)) {
-        winner = player.name;
+      if (row.every((mark) => mark === currentPlayer.mark)) {
+        winner = currentPlayer.name;
       }
     });
 
@@ -56,8 +65,8 @@ const TicTacToe = (function () {
     );
 
     rotatedGameBoard.forEach((row) => {
-      if (row.every((mark) => mark === player.mark)) {
-        winner = player.name;
+      if (row.every((mark) => mark === currentPlayer.mark)) {
+        winner = currentPlayer.name;
       }
     });
 
@@ -80,8 +89,8 @@ const TicTacToe = (function () {
     );
 
     diagonalLines.forEach((row) => {
-      if (row.every((mark) => mark === player.mark)) {
-        winner = player.name;
+      if (row.every((mark) => mark === currentPlayer.mark)) {
+        winner = currentPlayer.name;
       }
     });
 

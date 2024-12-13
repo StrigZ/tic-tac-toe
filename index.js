@@ -9,7 +9,7 @@ const createPlayer = function (name, mark) {
 };
 
 const TicTacToe = (function () {
-  const gameBoard = STARTING_GAME_BOARD;
+  let gameBoard = STARTING_GAME_BOARD;
   let winner = null;
 
   const getBoard = () => gameBoard;

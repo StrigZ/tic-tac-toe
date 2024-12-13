@@ -4,7 +4,7 @@ const STARTING_GAME_BOARD = [
   [null, null, null],
 ];
 
-const createPlayer = function (name, mark) {
+const createPlayer = function ({ name, mark }) {
   return { name, mark };
 };
 

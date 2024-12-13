@@ -24,11 +24,18 @@ const TicTacToe = (function () {
   const getWinner = () => winner;
 
   const placeMark = (player, x, y) => {
+    const isOccupied = !!gameBoard[y][x];
+
+    if (!isOccupied) {
     gameBoard[y][x] = player.mark;
+console.table(gameBoard);
     checkWin(player);
-    console.table(gameBoard);
+    checkIsBoardFull();
 
     return gameBoard;
+} else {
+      console.log("Already occupied");
+    }
   };
 
   const checkWin = (player) => {

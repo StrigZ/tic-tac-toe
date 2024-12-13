@@ -10,6 +10,9 @@ const TicTacToe = (function () {
   ];
   let winner = null;
 
+  const getBoard = () => gameBoard;
+  const getWinner = () => winner;
+
   const resetBoard = () => {
     gameBoard = [
       [null, null, null],
@@ -20,20 +23,17 @@ const TicTacToe = (function () {
     return gameBoard;
   };
 
-  const getBoard = () => gameBoard;
-  const getWinner = () => winner;
-
   const placeMark = (player, x, y) => {
     const isOccupied = !!gameBoard[y][x];
 
     if (!isOccupied) {
-    gameBoard[y][x] = player.mark;
-console.table(gameBoard);
-    checkWin(player);
-    checkIsBoardFull();
+      gameBoard[y][x] = player.mark;
+      console.table(gameBoard);
+      checkWin(player);
+      checkIsBoardFull();
 
-    return gameBoard;
-} else {
+      return gameBoard;
+    } else {
       console.log("Already occupied");
     }
   };

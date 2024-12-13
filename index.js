@@ -8,6 +8,7 @@ const TicTacToe = (function () {
     [null, null, null],
     [null, null, null],
   ];
+  let winner = null;
 
   const resetBoard = () => {
     gameBoard = [
@@ -15,19 +16,22 @@ const TicTacToe = (function () {
       [null, null, null],
       [null, null, null],
     ];
+    winner = null;
     return gameBoard;
   };
 
   const getBoard = () => gameBoard;
+  const getWinner = () => winner;
 
   const placeMark = (player, x, y) => {
     gameBoard[y][x] = player.mark;
     checkWin(player);
+    console.table(gameBoard);
+
     return gameBoard;
   };
 
   const checkWin = (player) => {
-    const winner = null;
     // horizontal win
     gameBoard.forEach((row) => {
       if (row.every((mark) => mark === player.mark)) {
@@ -75,7 +79,11 @@ const TicTacToe = (function () {
         winner = player.name;
       }
     });
+
+    if (winner) {
+      console.log(`AND THE WINNER IS ${winner}`);
+    }
   };
 
-  return { resetBoard, getBoard, placeMark };
+  return { resetBoard, getBoard, getWinner, placeMark };
 })();

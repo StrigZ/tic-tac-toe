@@ -100,6 +100,11 @@ const TicTacToe = (function () {
   };
 
   const checkIsBoardFull = () => {
+    // Do nothing if last move won the game
+    if (winner) {
+      return;
+    }
+
     if (!gameBoard.flat().includes(null)) {
       winner = "DRAW";
       console.log(winner);

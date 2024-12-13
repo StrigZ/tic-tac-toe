@@ -1,3 +1,7 @@
+const createPlayer = function (name, mark) {
+  return { name, mark };
+};
+
 const TicTacToe = (function () {
   const gameBoard = [
     [null, null, null],

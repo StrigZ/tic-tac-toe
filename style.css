@@ -9,8 +9,15 @@
 body {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  gap: 32px;
   align-items: center;
   min-height: 100vh;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 500;
 }
 
 ul {
@@ -65,7 +72,7 @@ dialog {
     border-radius: 12px;
     padding: 16px;
 
-    h1 {
+    h2 {
       font-size: 2rem;
       text-align: center;
       font-weight: 400;

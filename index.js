@@ -148,7 +148,12 @@ const TicTacToeRenderer = (function (game) {
     } else {
       console.log(`${winner} is a winner`);
     }
-    openWinnerModal();
+
+    boardEle.style["pointer-events"] = "none";
+    setTimeout(() => {
+      openWinnerModal();
+      boardEle.style["pointer-events"] = "all";
+    }, 500);
   };
 
   const closeWinnerModal = () => winnerDialogEle.close();

@@ -36,8 +36,7 @@ const TicTacToe = (function () {
 
     if (!isOccupied) {
       gameBoard[x][y] = currentPlayer.mark;
-      console.table(gameBoard);
-      checkWin(currentPlayer);
+            checkWin(currentPlayer);
       checkIsBoardFull();
 
       currentPlayer =

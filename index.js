@@ -119,7 +119,45 @@ const TicTacToe = (function () {
     resetBoard,
     getBoard,
     getWinner,
-getCurrentPlayer,
+    getCurrentPlayer,
     placeMark,
   };
 })();
+
+const TicTacToeRenderer = (function name(TicTacToe) {
+  const boardDiv = document.querySelector(".board");
+
+  // Create game board in DOM
+  const renderBoard = () => {
+    boardDiv.innerHTML = "";
+
+    TicTacToe.getBoard().forEach((row, x) =>
+      row.forEach((mark, y) => {
+        const tile = document.createElement("li");
+        tile.textContent = mark;
+        tile.dataset.x = x;
+        tile.dataset.y = y;
+
+        boardDiv.append(tile);
+      })
+    );
+  };
+
+  // Initial render
+  if ((boardDiv.childNodes, length === 0)) {
+    renderBoard();
+  }
+
+  // Listen to the clicks
+  boardDiv.addEventListener("click", ({ target, stopPropagation }) => {
+    // If target is ul, do nothing
+    if (target instanceof HTMLUListElement) {
+      return;
+    }
+
+    const { x, y } = target.dataset;
+
+    TicTacToe.placeMark(x, y);
+    renderBoard();
+  });
+})(TicTacToe);

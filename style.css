@@ -13,7 +13,7 @@ body {
   gap: 32px;
   align-items: center;
   min-height: 100vh;
-  padding: 32px;
+  padding: min(2.5vw, 32px);
 }
 
 h1 {

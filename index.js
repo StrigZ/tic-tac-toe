@@ -37,7 +37,6 @@ const TicTacToe = (function () {
     if (!isOccupied) {
       gameBoard[x][y] = currentPlayer.mark;
       checkWin(currentPlayer);
-      checkIsBoardFull();
 
       currentPlayer =
         currentPlayer === firstPlayer ? secondPlayer : firstPlayer;
@@ -51,7 +50,7 @@ const TicTacToe = (function () {
     // horizontal win
     gameBoard.forEach((row) => {
       if (row.every((mark) => mark === currentPlayer.mark)) {
-        winner = currentPlayer.name;
+        return (winner = currentPlayer.name);
       }
     });
 
@@ -68,7 +67,7 @@ const TicTacToe = (function () {
 
     rotatedGameBoard.forEach((row) => {
       if (row.every((mark) => mark === currentPlayer.mark)) {
-        winner = currentPlayer.name;
+        return (winner = currentPlayer.name);
       }
     });
 
@@ -92,27 +91,12 @@ const TicTacToe = (function () {
 
     diagonalLines.forEach((row) => {
       if (row.every((mark) => mark === currentPlayer.mark)) {
-        winner = currentPlayer.name;
+        return (winner = currentPlayer.name);
       }
     });
 
-    if (winner) {
-      // Show winner somewhere on the page
-      // Disable board
-      // Show restart button
-      console.log(`AND THE WINNER IS ${winner}`);
-    }
-  };
-
-  const checkIsBoardFull = () => {
-    // Do nothing if last move won the game
-    if (winner) {
-      return;
-    }
-
     if (!gameBoard.flat().includes(null)) {
-      winner = "DRAW";
-      console.log(winner);
+      return (winner = "DRAW");
     }
   };
 
@@ -160,9 +144,11 @@ const TicTacToeRenderer = (function (game) {
     game.placeMark(x, y);
     renderBoard();
 
-    if (game.getWinner()) {
-      // Fires when someone has won
-      console.log(`${game.getWinner()} is a winner!`);
+    const winner = game.getWinner();
+    if (winner === "DRAW") {
+      return console.log("IT'S A DRAW");
+    } else if (winner) {
+      return console.log(`${winner} is a winner`);
     }
   });
 })(TicTacToe);

@@ -117,6 +117,7 @@ const TicTacToeRenderer = function (game) {
   const boardEle = document.querySelector(".board");
   const winnerDialogEle = document.querySelector("dialog");
   const playAgainButton = document.querySelector("#play-again");
+  const winnerNameEle = document.querySelector("#winner-name");
 
   // Create game board in DOM
   const renderBoard = () => {
@@ -145,7 +146,6 @@ const TicTacToeRenderer = function (game) {
     if (!winner) {
       return;
     }
-    const winnerNameEle = document.querySelector("#winner-name");
 
     if (winner === "DRAW") {
       winnerNameEle.textContent = "DRAW";

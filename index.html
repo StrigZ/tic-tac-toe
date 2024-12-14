@@ -8,7 +8,19 @@
   </head>
   <body>
     <h1>Tic-Tac-Toe</h1>
-    <button type="button" id="start-game">Start</button>
+    <div class="player-name-input">
+      <button type="button" id="start-game">Start</button>
+      <div>
+        <div class="player-name-control">
+          <label for="player-one-name">Player 1 Name</label>
+          <input type="text" id="player-one-name" placeholder="First Player" />
+        </div>
+        <div class="player-name-control">
+          <label for="player-two-name">Player 2 name</label>
+          <input type="text" id="player-two-name" placeholder="Second Player" />
+        </div>
+      </div>
+    </div>
     <ul class="board"></ul>
     <dialog>
       <div class="overlay">

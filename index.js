@@ -125,11 +125,11 @@ const TicTacToe = (function () {
 })();
 
 const TicTacToeRenderer = (function (TicTacToe) {
-  const boardDiv = document.querySelector(".board");
+  const boardEle = document.querySelector(".board");
 
   // Create game board in DOM
   const renderBoard = () => {
-    boardDiv.innerHTML = "";
+    boardEle.innerHTML = "";
 
     TicTacToe.getBoard().forEach((row, x) =>
       row.forEach((mark, y) => {
@@ -138,18 +138,18 @@ const TicTacToeRenderer = (function (TicTacToe) {
         tile.dataset.x = x;
         tile.dataset.y = y;
 
-        boardDiv.append(tile);
+        boardEle.append(tile);
       })
     );
   };
 
   // Initial render
-  if (boardDiv.childNodes.length === 0) {
+  if (boardEle.childNodes.length === 0) {
     renderBoard();
   }
 
   // Listen to the clicks
-  boardDiv.addEventListener("click", ({ target, stopPropagation }) => {
+  boardEle.addEventListener("click", ({ target, stopPropagation }) => {
     // If target is ul, do nothing
     if (target instanceof HTMLUListElement) {
       return;

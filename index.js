@@ -124,7 +124,7 @@ const TicTacToe = (function () {
   };
 })();
 
-const TicTacToeRenderer = (function name(TicTacToe) {
+const TicTacToeRenderer = (function (TicTacToe) {
   const boardDiv = document.querySelector(".board");
 
   // Create game board in DOM

@@ -2,10 +2,7 @@ const createPlayer = function ({ name, mark }) {
   return { name, mark };
 };
 
-const TicTacToe = function (
-  playerOneName = "Player 1",
-  playerTwoName = "Player 2"
-) {
+const TicTacToe = function (playerOneName, playerTwoName) {
   let gameBoard = [
     [null, null, null],
     [null, null, null],
@@ -208,8 +205,12 @@ const GameManager = (() => {
   const hideTitle = () => titleEle.classList.add("hidden");
 
   const getPlayerNames = () => {
-    const playerOneName = playerOneNameInput.value;
-    const playerTwoName = playerTwoNameInput.value;
+    const playerOneName = !!playerOneNameInput.value
+      ? playerOneNameInput.value
+      : "Player 1";
+    const playerTwoName = !!playerTwoNameInput.value
+      ? playerOneNameInput.value
+      : "Player 2";
 
     return [playerOneName, playerTwoName];
   };

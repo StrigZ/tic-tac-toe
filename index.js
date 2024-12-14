@@ -164,12 +164,12 @@ const TicTacToeRenderer = function (game) {
   const openWinnerModal = () => winnerDialogEle.showModal();
 
   const restartGame = () => {
+    closeWinnerModal();
     game.resetBoard();
     renderBoard();
   };
 
-  // Listen to the clicks
-  boardEle.addEventListener("click", ({ target }) => {
+  const makeTurn = ({ target }) => {
     // If target is ul, do nothing
     if (target instanceof HTMLUListElement) {
       return;
@@ -179,12 +179,11 @@ const TicTacToeRenderer = function (game) {
     game.placeMark(x, y);
     renderBoard();
     renderWinner();
-  });
+  };
 
-  playAgainButton.addEventListener("click", () => {
-    closeWinnerModal();
-    restartGame();
-  });
+  // Listen to the clicks
+  boardEle.addEventListener("click", makeTurn);
+  playAgainButton.addEventListener("click", restartGame);
 };
 
 const GameManager = (() => {

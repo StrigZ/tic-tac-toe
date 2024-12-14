@@ -149,7 +149,7 @@ const TicTacToeRenderer = (function (TicTacToe) {
   }
 
   // Listen to the clicks
-  boardEle.addEventListener("click", ({ target, stopPropagation }) => {
+  boardEle.addEventListener("click", ({ target }) => {
     // If target is ul, do nothing
     if (target instanceof HTMLUListElement) {
       return;

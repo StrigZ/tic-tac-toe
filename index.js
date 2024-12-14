@@ -36,7 +36,7 @@ const TicTacToe = (function () {
 
     if (!isOccupied) {
       gameBoard[x][y] = currentPlayer.mark;
-            checkWin(currentPlayer);
+      checkWin(currentPlayer);
       checkIsBoardFull();
 
       currentPlayer =
@@ -125,14 +125,14 @@ const TicTacToe = (function () {
   };
 })();
 
-const TicTacToeRenderer = (function (TicTacToe) {
+const TicTacToeRenderer = (function (game) {
   const boardEle = document.querySelector(".board");
 
   // Create game board in DOM
   const renderBoard = () => {
     boardEle.innerHTML = "";
 
-    TicTacToe.getBoard().forEach((row, x) =>
+    game.getBoard().forEach((row, x) =>
       row.forEach((mark, y) => {
         const tile = document.createElement("li");
         tile.textContent = mark;
@@ -157,8 +157,12 @@ const TicTacToeRenderer = (function (TicTacToe) {
     }
 
     const { x, y } = target.dataset;
-
-    TicTacToe.placeMark(x, y);
+    game.placeMark(x, y);
     renderBoard();
+
+    if (game.getWinner()) {
+      // Fires when someone has won
+      console.log(`${game.getWinner()} is a winner!`);
+    }
   });
 })(TicTacToe);

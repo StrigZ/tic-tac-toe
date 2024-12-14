@@ -114,7 +114,7 @@ const TicTacToe = function (
 };
 
 const TicTacToeRenderer = function (game) {
-  const boardEle = document.querySelector(".board");
+  const boardEle = document.querySelector("#board");
   const winnerDialogEle = document.querySelector("dialog");
   const playAgainButton = document.querySelector("#play-again");
   const winnerNameEle = document.querySelector("#winner-name");
@@ -142,6 +142,7 @@ const TicTacToeRenderer = function (game) {
 
   // Initial render
   if (boardEle.childNodes.length === 0) {
+    boardEle.classList.add("board");
     renderBoard();
     renderWhoseTurn();
   }
@@ -198,10 +199,13 @@ const GameManager = (() => {
   const playerOneNameInput = document.querySelector("#player-one-name");
   const playerTwoNameInput = document.querySelector("#player-two-name");
   const playerNameInputDiv = document.querySelector(".player-name-input");
+  const titleEle = document.querySelector("h1");
 
   const hideStartUI = () => {
     playerNameInputDiv.classList.add("hidden");
   };
+
+  const hideTitle = () => titleEle.classList.add("hidden");
 
   const getPlayerNames = () => {
     const playerOneName = playerOneNameInput.value;
@@ -212,6 +216,7 @@ const GameManager = (() => {
 
   startGameButton.addEventListener("click", () => {
     hideStartUI();
+    hideTitle();
     const [playerOneName, playerTwoName] = getPlayerNames();
     TicTacToeRenderer(TicTacToe(playerOneName, playerTwoName));
   });

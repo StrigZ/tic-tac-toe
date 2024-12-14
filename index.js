@@ -24,6 +24,7 @@ const TicTacToe = (function () {
       [null, null, null],
     ];
     winner = null;
+    currentPlayer = firstPlayer;
     return gameBoard;
   };
 
@@ -112,6 +113,7 @@ const TicTacToe = (function () {
 const TicTacToeRenderer = (function (game) {
   const boardEle = document.querySelector(".board");
   const winnerDialogEle = document.querySelector("dialog");
+  const playAgainButton = document.querySelector("#play-again");
 
   // Create game board in DOM
   const renderBoard = () => {
@@ -160,5 +162,11 @@ const TicTacToeRenderer = (function (game) {
     game.placeMark(x, y);
     renderBoard();
     renderWinner();
+  });
+
+  playAgainButton.addEventListener("click", () => {
+    winnerDialogEle.close();
+    game.resetBoard();
+    renderBoard();
   });
 })(TicTacToe);

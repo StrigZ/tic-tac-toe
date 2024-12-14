@@ -144,7 +144,7 @@ const TicTacToeRenderer = (function (TicTacToe) {
   };
 
   // Initial render
-  if ((boardDiv.childNodes, length === 0)) {
+  if (boardDiv.childNodes.length === 0) {
     renderBoard();
   }
 

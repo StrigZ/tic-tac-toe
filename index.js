@@ -148,7 +148,15 @@ const TicTacToeRenderer = (function (game) {
     } else {
       console.log(`${winner} is a winner`);
     }
-    winnerDialogEle.showModal();
+    openWinnerModal();
+  };
+
+  const closeWinnerModal = () => winnerDialogEle.close();
+  const openWinnerModal = () => winnerDialogEle.showModal();
+
+  const restartGame = () => {
+    game.resetBoard();
+    renderBoard();
   };
 
   // Listen to the clicks
@@ -165,8 +173,7 @@ const TicTacToeRenderer = (function (game) {
   });
 
   playAgainButton.addEventListener("click", () => {
-    winnerDialogEle.close();
-    game.resetBoard();
-    renderBoard();
+    closeWinnerModal();
+    restartGame();
   });
 })(TicTacToe);

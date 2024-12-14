@@ -110,7 +110,7 @@ const TicTacToe = (function () {
   };
 })();
 
-const TicTacToeRenderer = (function (game) {
+const TicTacToeRenderer = function (game) {
   const boardEle = document.querySelector(".board");
   const winnerDialogEle = document.querySelector("dialog");
   const playAgainButton = document.querySelector("#play-again");
@@ -184,4 +184,17 @@ const TicTacToeRenderer = (function (game) {
     closeWinnerModal();
     restartGame();
   });
-})(TicTacToe);
+};
+
+const GameManager = (() => {
+  const startGameButton = document.querySelector("#start-game");
+
+  const hideStartButton = () => {
+    startGameButton.classList.add("hidden");
+  };
+
+  startGameButton.addEventListener("click", () => {
+    hideStartButton();
+    TicTacToeRenderer(TicTacToe);
+  });
+})();

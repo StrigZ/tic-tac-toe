@@ -77,17 +77,21 @@ dialog {
       text-align: center;
       font-weight: 400;
     }
-
-    button {
-      border: navajowhite;
-      background-color: rgb(207, 93, 230);
-      padding: 32px 16px;
-      border-radius: 6px;
-      width: 80%;
-      font-size: 2rem;
-      font-weight: bold;
-      cursor: pointer;
-      color: white;
-    }
   }
+}
+
+button {
+  border: navajowhite;
+  background-color: rgb(207, 93, 230);
+  padding: 32px 16px;
+  border-radius: 6px;
+  width: 80%;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+}
+
+.hidden {
+  display: none;
 }

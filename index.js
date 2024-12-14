@@ -17,6 +17,7 @@ const TicTacToe = (function () {
 
   const getBoard = () => gameBoard;
   const getWinner = () => winner;
+  const getCurrentPlayer = () => currentPlayer;
 
   const resetBoard = () => {
     gameBoard = STARTING_GAME_BOARD;
@@ -118,6 +119,7 @@ const TicTacToe = (function () {
     resetBoard,
     getBoard,
     getWinner,
+getCurrentPlayer,
     placeMark,
   };
 })();

@@ -133,6 +133,15 @@ const TicTacToeRenderer = (function (game) {
     renderBoard();
   }
 
+  const renderWinner = () => {
+    const winner = game.getWinner();
+    if (winner === "DRAW") {
+      return console.log("IT'S A DRAW");
+    } else if (winner) {
+      return console.log(`${winner} is a winner`);
+    }
+  };
+
   // Listen to the clicks
   boardEle.addEventListener("click", ({ target }) => {
     // If target is ul, do nothing
@@ -143,12 +152,6 @@ const TicTacToeRenderer = (function (game) {
     const { x, y } = target.dataset;
     game.placeMark(x, y);
     renderBoard();
-
-    const winner = game.getWinner();
-    if (winner === "DRAW") {
-      return console.log("IT'S A DRAW");
-    } else if (winner) {
-      return console.log(`${winner} is a winner`);
-    }
+    renderWinner();
   });
 })(TicTacToe);

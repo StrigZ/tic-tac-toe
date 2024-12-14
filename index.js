@@ -118,6 +118,7 @@ const TicTacToeRenderer = function (game) {
   const winnerDialogEle = document.querySelector("dialog");
   const playAgainButton = document.querySelector("#play-again");
   const winnerNameEle = document.querySelector("#winner-name");
+  const currentTurnEle = document.querySelector(".current-turn");
 
   // Create game board in DOM
   const renderBoard = () => {
@@ -135,9 +136,14 @@ const TicTacToeRenderer = function (game) {
     );
   };
 
+  const renderWhoseTurn = () => {
+    currentTurnEle.textContent = `${game.getCurrentPlayer().name}'s turn`;
+  };
+
   // Initial render
   if (boardEle.childNodes.length === 0) {
     renderBoard();
+    renderWhoseTurn();
   }
 
   const renderWinner = () => {
@@ -179,6 +185,7 @@ const TicTacToeRenderer = function (game) {
     game.placeMark(x, y);
     renderBoard();
     renderWinner();
+    renderWhoseTurn();
   };
 
   // Listen to the clicks

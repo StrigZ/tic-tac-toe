@@ -142,10 +142,13 @@ const TicTacToeRenderer = (function (game) {
     if (!winner) {
       return;
     }
+    const winnerNameEle = document.querySelector("#winner-name");
 
     if (winner === "DRAW") {
+      winnerNameEle.textContent = "DRAW";
       console.log("IT'S A DRAW");
     } else {
+      winnerNameEle.textContent = `${winner} is a winner`;
       console.log(`${winner} is a winner`);
     }
 

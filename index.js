@@ -111,6 +111,7 @@ const TicTacToe = (function () {
 
 const TicTacToeRenderer = (function (game) {
   const boardEle = document.querySelector(".board");
+  const winnerDialogEle = document.querySelector("dialog");
 
   // Create game board in DOM
   const renderBoard = () => {
@@ -135,11 +136,17 @@ const TicTacToeRenderer = (function (game) {
 
   const renderWinner = () => {
     const winner = game.getWinner();
-    if (winner === "DRAW") {
-      return console.log("IT'S A DRAW");
-    } else if (winner) {
-      return console.log(`${winner} is a winner`);
+
+    if (!winner) {
+      return;
     }
+
+    if (winner === "DRAW") {
+      console.log("IT'S A DRAW");
+    } else {
+      console.log(`${winner} is a winner`);
+    }
+    winnerDialogEle.showModal();
   };
 
   // Listen to the clicks

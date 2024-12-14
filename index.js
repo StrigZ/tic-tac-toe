@@ -1,15 +1,13 @@
-const STARTING_GAME_BOARD = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null],
-];
-
 const createPlayer = function ({ name, mark }) {
   return { name, mark };
 };
 
 const TicTacToe = (function () {
-  let gameBoard = STARTING_GAME_BOARD;
+  let gameBoard = [
+    [null, null, null],
+    [null, null, null],
+    [null, null, null],
+  ];
   let winner = null;
   const firstPlayer = createPlayer({ name: "First Player", mark: "X" });
   const secondPlayer = createPlayer({ name: "Second Player", mark: "O" });
@@ -20,7 +18,11 @@ const TicTacToe = (function () {
   const getCurrentPlayer = () => currentPlayer;
 
   const resetBoard = () => {
-    gameBoard = STARTING_GAME_BOARD;
+    gameBoard = [
+      [null, null, null],
+      [null, null, null],
+      [null, null, null],
+    ];
     winner = null;
     return gameBoard;
   };

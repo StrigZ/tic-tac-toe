@@ -2,15 +2,18 @@ const createPlayer = function ({ name, mark }) {
   return { name, mark };
 };
 
-const TicTacToe = (function () {
+const TicTacToe = function (
+  playerOneName = "Player 1",
+  playerTwoName = "Player 2"
+) {
   let gameBoard = [
     [null, null, null],
     [null, null, null],
     [null, null, null],
   ];
   let winner = null;
-  const firstPlayer = createPlayer({ name: "First Player", mark: "X" });
-  const secondPlayer = createPlayer({ name: "Second Player", mark: "O" });
+  const firstPlayer = createPlayer({ name: playerOneName, mark: "X" });
+  const secondPlayer = createPlayer({ name: playerTwoName, mark: "O" });
   let currentPlayer = firstPlayer;
 
   const getBoard = () => gameBoard;
@@ -108,7 +111,7 @@ const TicTacToe = (function () {
     getCurrentPlayer,
     placeMark,
   };
-})();
+};
 
 const TicTacToeRenderer = function (game) {
   const boardEle = document.querySelector(".board");
@@ -188,13 +191,24 @@ const TicTacToeRenderer = function (game) {
 
 const GameManager = (() => {
   const startGameButton = document.querySelector("#start-game");
+  const playerOneNameInput = document.querySelector("#player-one-name");
+  const playerTwoNameInput = document.querySelector("#player-two-name");
+  const playerNameInputDiv = document.querySelector(".player-name-input");
 
-  const hideStartButton = () => {
-    startGameButton.classList.add("hidden");
+  const hideStartUI = () => {
+    playerNameInputDiv.classList.add("hidden");
+  };
+
+  const getPlayerNames = () => {
+    const playerOneName = playerOneNameInput.value;
+    const playerTwoName = playerTwoNameInput.value;
+
+    return [playerOneName, playerTwoName];
   };
 
   startGameButton.addEventListener("click", () => {
-    hideStartButton();
-    TicTacToeRenderer(TicTacToe);
+    hideStartUI();
+    const [playerOneName, playerTwoName] = getPlayerNames();
+    TicTacToeRenderer(TicTacToe(playerOneName, playerTwoName));
   });
 })();

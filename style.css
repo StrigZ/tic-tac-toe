@@ -65,7 +65,11 @@ dialog {
     border-radius: 12px;
     padding: 16px;
 
-    font-size: 2rem;
+    h1 {
+      font-size: 2rem;
+      text-align: center;
+      font-weight: 400;
+    }
 
     button {
       border: navajowhite;

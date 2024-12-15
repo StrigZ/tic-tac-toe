@@ -96,7 +96,7 @@ const TicTacToe = function (playerOneName, playerTwoName) {
       }
     });
 
-    if (!gameBoard.flat().includes(null)) {
+    if (!winner && !gameBoard.flat().includes(null)) {
       return (winner = "DRAW");
     }
   };

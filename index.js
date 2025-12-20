@@ -209,7 +209,7 @@ const GameManager = (() => {
       ? playerOneNameInput.value
       : "Player 1";
     const playerTwoName = !!playerTwoNameInput.value
-      ? playerOneNameInput.value
+      ? playerTwoNameInput.value
       : "Player 2";
 
     return [playerOneName, playerTwoName];
